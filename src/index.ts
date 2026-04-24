@@ -99,7 +99,7 @@ app.use((_req, res) => {
 // ─── Démarrage du serveur ────────────────────────────────
 import { startScheduler } from './services/scheduler';
 
-app.listen(PORT, () => {
+app.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`
   🔬 ResearchCall API
   ───────────────────────
