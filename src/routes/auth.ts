@@ -1,7 +1,7 @@
-// ─────────────────────────────────────────────────────────
-// backend/src/routes/auth.ts — Routes d'authentification
-// ResearchCall MVP — Phase 1
-// ─────────────────────────────────────────────────────────
+﻿// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// backend/src/routes/auth.ts â€” Routes d'authentification
+// ResearchCall MVP â€” Phase 1
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
@@ -18,12 +18,12 @@ import {
 const router = Router();
 const prisma = new PrismaClient();
 
-// ─── Schémas de validation ───────────────────────────────
+// â”€â”€â”€ SchÃ©mas de validation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const registerSchema = z.object({
   email: z.string().email('Email invalide'),
-  password: z.string().min(8, 'Min. 8 caractères'),
-  firstName: z.string().min(2, 'Prénom trop court'),
+  password: z.string().min(8, 'Min. 8 caractÃ¨res'),
+  firstName: z.string().min(2, 'PrÃ©nom trop court'),
   lastName: z.string().min(2, 'Nom trop court'),
   role: z.enum(['seeker', 'publisher', 'both']).default('both'),
 });
@@ -43,23 +43,23 @@ const forgotPasswordSchema = z.object({
 
 const resetPasswordSchema = z.object({
   token: z.string().min(1),
-  newPassword: z.string().min(8, 'Min. 8 caractères'),
+  newPassword: z.string().min(8, 'Min. 8 caractÃ¨res'),
 });
 
-// ═══════════════════════════════════════════════════════════
-// POST /api/auth/register — Inscription
-// ═══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// POST /api/auth/register â€” Inscription
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 router.post('/register', validate(registerSchema), async (req: Request, res: Response) => {
   try {
     const { email, password, firstName, lastName, role } = req.body;
 
-    // Vérifier si l'email existe déjà
+    // VÃ©rifier si l'email existe dÃ©jÃ 
     const existing = await prisma.user.findUnique({ where: { email } });
     if (existing) {
       res.status(409).json({
         error: true,
-        message: 'Un compte avec cet email existe déjà',
+        message: 'Un compte avec cet email existe dÃ©jÃ ',
       });
       return;
     }
@@ -68,7 +68,7 @@ router.post('/register', validate(registerSchema), async (req: Request, res: Res
     const salt = await bcrypt.genSalt(12);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    // Créer l'utilisateur
+    // CrÃ©er l'utilisateur
     const user = await prisma.user.create({
       data: {
         email,
@@ -92,7 +92,7 @@ router.post('/register', validate(registerSchema), async (req: Request, res: Res
       },
     });
 
-    // Générer les tokens
+    // GÃ©nÃ©rer les tokens
     const payload: JwtPayload = {
       userId: user.id,
       email: user.email,
@@ -121,9 +121,9 @@ router.post('/register', validate(registerSchema), async (req: Request, res: Res
   }
 });
 
-// ═══════════════════════════════════════════════════════════
-// POST /api/auth/login — Connexion
-// ═══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// POST /api/auth/login â€” Connexion
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 router.post('/login', validate(loginSchema), async (req: Request, res: Response) => {
   try {
@@ -139,7 +139,7 @@ router.post('/login', validate(loginSchema), async (req: Request, res: Response)
       return;
     }
 
-    // Vérifier le mot de passe
+    // VÃ©rifier le mot de passe
     const isValid = await bcrypt.compare(password, user.passwordHash);
     if (!isValid) {
       res.status(401).json({
@@ -149,7 +149,7 @@ router.post('/login', validate(loginSchema), async (req: Request, res: Response)
       return;
     }
 
-    // Générer les tokens
+    // GÃ©nÃ©rer les tokens
     const payload: JwtPayload = {
       userId: user.id,
       email: user.email,
@@ -167,7 +167,7 @@ router.post('/login', validate(loginSchema), async (req: Request, res: Response)
       },
     });
 
-    // Réponse sans passwordHash
+    // RÃ©ponse sans passwordHash
     const { passwordHash: _, ...userWithoutPassword } = user;
 
     res.json({
@@ -181,15 +181,15 @@ router.post('/login', validate(loginSchema), async (req: Request, res: Response)
   }
 });
 
-// ═══════════════════════════════════════════════════════════
-// POST /api/auth/refresh — Rafraîchir le token
-// ═══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// POST /api/auth/refresh â€” RafraÃ®chir le token
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 router.post('/refresh', validate(refreshSchema), async (req: Request, res: Response) => {
   try {
     const { refreshToken } = req.body;
 
-    // Vérifier le token
+    // VÃ©rifier le token
     let decoded: JwtPayload;
     try {
       decoded = verifyRefreshToken(refreshToken);
@@ -198,20 +198,20 @@ router.post('/refresh', validate(refreshSchema), async (req: Request, res: Respo
       return;
     }
 
-    // Vérifier en BDD
+    // VÃ©rifier en BDD
     const storedToken = await prisma.refreshToken.findUnique({
       where: { token: refreshToken },
     });
 
     if (!storedToken || storedToken.expiresAt < new Date()) {
-      res.status(401).json({ error: true, message: 'Refresh token expiré' });
+      res.status(401).json({ error: true, message: 'Refresh token expirÃ©' });
       return;
     }
 
     // Supprimer l'ancien refresh token (rotation)
     await prisma.refreshToken.delete({ where: { id: storedToken.id } });
 
-    // Générer de nouveaux tokens
+    // GÃ©nÃ©rer de nouveaux tokens
     const payload: JwtPayload = {
       userId: decoded.userId,
       email: decoded.email,
@@ -239,9 +239,9 @@ router.post('/refresh', validate(refreshSchema), async (req: Request, res: Respo
   }
 });
 
-// ═══════════════════════════════════════════════════════════
-// POST /api/auth/forgot-password — Mot de passe oublié
-// ═══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// POST /api/auth/forgot-password â€” Mot de passe oubliÃ©
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 router.post('/forgot-password', validate(forgotPasswordSchema), async (req: Request, res: Response) => {
   try {
@@ -249,18 +249,26 @@ router.post('/forgot-password', validate(forgotPasswordSchema), async (req: Requ
 
     const user = await prisma.user.findUnique({ where: { email } });
 
-    // Toujours répondre 200 pour ne pas révéler l'existence d'un compte
+    // Toujours rÃ©pondre 200 pour ne pas rÃ©vÃ©ler l'existence d'un compte
     if (!user) {
-      res.json({ message: 'Si un compte existe avec cet email, un lien de réinitialisation a été envoyé.' });
+      res.json({ message: 'Si un compte existe avec cet email, un lien de rÃ©initialisation a Ã©tÃ© envoyÃ©.' });
       return;
     }
 
-    // TODO Phase 5 : Envoyer un email avec un lien de réinitialisation
-    // Pour l'instant, on simule la réponse
-    console.log(`[DEV] Password reset requested for: ${email}`);
+    // Generate a secure reset token and store it
+    const crypto = await import('crypto');
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+
+    await prisma.refreshToken.create({
+      data: { token: `pwd_reset:${resetToken}`, userId: user.id, expiresAt },
+    });
+
+    const { sendPasswordResetEmail } = await import('../services/emailService');
+    await sendPasswordResetEmail(email, resetToken);
 
     res.json({
-      message: 'Si un compte existe avec cet email, un lien de réinitialisation a été envoyé.',
+      message: 'Si un compte existe avec cet email, un lien de rÃ©initialisation a Ã©tÃ© envoyÃ©.',
     });
   } catch (error) {
     console.error('Forgot password error:', error);
@@ -268,14 +276,29 @@ router.post('/forgot-password', validate(forgotPasswordSchema), async (req: Requ
   }
 });
 
-// ═══════════════════════════════════════════════════════════
-// POST /api/auth/reset-password — Réinitialiser le mot de passe
-// ═══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// POST /api/auth/reset-password â€” RÃ©initialiser le mot de passe
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 router.post('/reset-password', validate(resetPasswordSchema), async (req: Request, res: Response) => {
   try {
-    // TODO Phase 5 : Vérifier le token de réinitialisation et mettre à jour le mot de passe
-    res.json({ message: 'Mot de passe réinitialisé avec succès.' });
+    const { token, newPassword } = req.body;
+
+    const stored = await prisma.refreshToken.findUnique({
+      where: { token: `pwd_reset:${token}` },
+      include: { user: true },
+    });
+
+    if (!stored || stored.expiresAt < new Date()) {
+      res.status(400).json({ error: true, message: 'Lien invalide ou expirÃ©' });
+      return;
+    }
+
+    const passwordHash = await bcrypt.hash(newPassword, 12);
+    await prisma.user.update({ where: { id: stored.userId }, data: { passwordHash } });
+    await prisma.refreshToken.delete({ where: { token: `pwd_reset:${token}` } });
+
+    res.json({ message: 'Mot de passe rÃ©initialisÃ© avec succÃ¨s.' });
   } catch (error) {
     console.error('Reset password error:', error);
     res.status(500).json({ error: true, message: 'Erreur serveur' });
