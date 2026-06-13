@@ -7,7 +7,7 @@
 // - Marquage automatique des appels expirés
 // ─────────────────────────────────────────────────────────
 
-import { sendDeadlineReminders, markExpiredCalls } from './notificationService';
+import { sendDeadlineReminders, markExpiredCalls } from './notificationService';import { scrapeAllSources } from './scraperService';
 
 const INTERVAL_MS = 60 * 60 * 1000; // Vérifier toutes les heures
 let lastRunDate = '';
@@ -38,7 +38,9 @@ async function runDailyTasks(): Promise<void> {
   console.log(`\n📋 Exécution des tâches quotidiennes — ${today}`);
 
   try {
-    // 1. Marquer les appels expirés
+    // 1. Scraper les sources francophones
+await scrapeAllSources();
+// 1. Marquer les appels expirés
     const expired = await markExpiredCalls();
 
     // 2. Envoyer les rappels de deadline

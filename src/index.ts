@@ -101,7 +101,10 @@ app.use((_req, res) => {
 // â”€â”€â”€ DÃ©marrage du serveur â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 import { startScheduler } from './services/scheduler';
 
-app.listen(Number(PORT), '0.0.0.0', () => {
+import { runPendingMigrations } from './services/migrationRunner';
+
+app.listen(Number(PORT), '0.0.0.0', async () => {
+  await runPendingMigrations();
   console.log(`
   ðŸ”¬ ResearchCall API
   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
