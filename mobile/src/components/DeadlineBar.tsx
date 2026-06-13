@@ -28,7 +28,7 @@ export function DeadlineBar({ deadline, createdAt }: Props) {
         <Animated.View style={[styles.fill, { backgroundColor: color }, animated]} />
       </View>
       <Text style={[styles.label, { color }]}>
-        {remaining <= 0 ? 'ExpirÃ©' : `${remaining}j restants`}
+        {remaining <= 0 ? 'Expiré' : `${remaining}j restants`}
       </Text>
     </View>
   );

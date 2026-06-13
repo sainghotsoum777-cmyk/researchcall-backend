@@ -31,7 +31,7 @@ export default function LoginScreen() {
     } catch (e: any) {
       Alert.alert('Erreur de connexion', e.message === 'Invalid credentials'
         ? 'Email ou mot de passe incorrect.'
-        : 'Impossible de se connecter. VÃ©rifiez votre connexion.');
+        : 'Impossible de se connecter. Vérifiez votre connexion.');
     } finally {
       setLoading(false);
     }
@@ -50,7 +50,7 @@ export default function LoginScreen() {
               <Ionicons name="flask" size={40} color={COLORS.primary} />
             </View>
             <Text style={styles.appName}>ResearchCall</Text>
-            <Text style={styles.tagline}>L'agrÃ©gateur d'appels scientifiques{'\n'}de l'Afrique francophone</Text>
+            <Text style={styles.tagline}>L'agrégateur d'appels scientifiques{'\n'}de l'Afrique francophone</Text>
           </View>
 
           {/* Form */}
@@ -87,7 +87,7 @@ export default function LoginScreen() {
             </View>
 
             <Link href="/(auth)/forgot-password" style={styles.forgotLink}>
-              <Text style={styles.forgotText}>Mot de passe oubliÃ© ?</Text>
+              <Text style={styles.forgotText}>Mot de passe oublié ?</Text>
             </Link>
 
             <TouchableOpacity

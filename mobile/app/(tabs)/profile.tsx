@@ -52,16 +52,16 @@ export default function ProfileScreen() {
   };
 
   const handleLogout = () => {
-    Alert.alert('DÃ©connexion', 'ÃŠtes-vous sÃ»r de vouloir vous dÃ©connecter ?', [
+    Alert.alert('Déconnexion', 'ÃŠtes-vous sûr de vouloir vous déconnecter ?', [
       { text: 'Annuler', style: 'cancel' },
-      { text: 'DÃ©connecter', style: 'destructive', onPress: logout },
+      { text: 'Déconnecter', style: 'destructive', onPress: logout },
     ]);
   };
 
   const handleDeleteAccount = () => {
     Alert.alert(
       'Supprimer le compte',
-      'Cette action est irrÃ©versible. Toutes vos donnÃ©es seront supprimÃ©es.',
+      'Cette action est irréversible. Toutes vos données seront supprimées.',
       [
         { text: 'Annuler', style: 'cancel' },
         {
@@ -167,8 +167,8 @@ export default function ProfileScreen() {
           ))}
         </View>
 
-        {/* PrÃ©fÃ©rences */}
-        <Section title="PRÃ‰FÃ‰RENCES">
+        {/* Préférences */}
+        <Section title="PRÉFÉRENCES">
           <Row
             icon="moon-outline"
             label="Mode sombre"
@@ -184,7 +184,7 @@ export default function ProfileScreen() {
           <Row
             icon="language-outline"
             label="Langue"
-            value={language === 'fr' ? 'FranÃ§ais' : 'English'}
+            value={language === 'fr' ? 'Français' : 'English'}
             onPress={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
           />
           <Row
@@ -194,17 +194,17 @@ export default function ProfileScreen() {
           />
         </Section>
 
-        {/* Ã€ propos */}
-        <Section title="Ã€ PROPOS">
+        {/* À propos */}
+        <Section title="À PROPOS">
           <Row
             icon="information-circle-outline"
-            label="Ã€ propos de ResearchCall"
+            label="À propos de ResearchCall"
             onPress={() => router.push('/profile/about' as any)}
           />
           <Row icon="code-slash-outline" label="Version" value={APP_VERSION} />
           <Row
             icon="shield-checkmark-outline"
-            label="Politique de confidentialitÃ©"
+            label="Politique de confidentialité"
             onPress={() => Linking.openURL('https://researchcall.ci/privacy')}
           />
           <Row
@@ -221,7 +221,7 @@ export default function ProfileScreen() {
 
         {/* Compte */}
         <Section title="COMPTE">
-          <Row icon="log-out-outline" label="Se dÃ©connecter" onPress={handleLogout} danger />
+          <Row icon="log-out-outline" label="Se déconnecter" onPress={handleLogout} danger />
           <Row icon="trash-outline" label="Supprimer mon compte" onPress={handleDeleteAccount} danger />
         </Section>
 

@@ -6,7 +6,7 @@ export function useDeadlineColor(deadline: string | undefined) {
   return useMemo(() => {
     if (!deadline) return { color: COLORS.text.secondary.light, label: '' };
     const days = differenceInDays(parseISO(deadline), new Date());
-    if (days < 0) return { color: COLORS.text.muted.light, label: 'ExpirÃ©', days };
+    if (days < 0) return { color: COLORS.text.muted.light, label: 'Expiré', days };
     if (days <= DEADLINE_URGENCY_DAYS.CRITICAL)
       return { color: COLORS.danger, label: `${days}j restants`, days, urgent: true };
     if (days <= DEADLINE_URGENCY_DAYS.WARNING)

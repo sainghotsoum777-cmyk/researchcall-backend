@@ -16,7 +16,7 @@ const SORT_OPTIONS = [
   { id: 'relevance', label: 'Pertinence' },
   { id: 'deadline_asc', label: 'Deadline â†‘' },
   { id: 'deadline_desc', label: 'Deadline â†“' },
-  { id: 'created_desc', label: 'Plus rÃ©cents' },
+  { id: 'created_desc', label: 'Plus récents' },
 ];
 
 export default function ExploreScreen() {
@@ -136,7 +136,7 @@ export default function ExploreScreen() {
       {total > 0 && (
         <View style={styles.resultsBar}>
           <Text style={[styles.resultsText, { color: textSecondary }]}>
-            {total} rÃ©sultat{total > 1 ? 's' : ''}
+            {total} résultat{total > 1 ? 's' : ''}
             {query ? ` pour Â« ${query} Â»` : ''}
           </Text>
         </View>
@@ -189,9 +189,9 @@ export default function ExploreScreen() {
           !loading ? (
             <View style={styles.empty}>
               <Ionicons name="search-outline" size={48} color={textSecondary} />
-              <Text style={[styles.emptyTitle, { color: textPrimary }]}>Aucun rÃ©sultat</Text>
+              <Text style={[styles.emptyTitle, { color: textPrimary }]}>Aucun résultat</Text>
               <Text style={[styles.emptyDesc, { color: textSecondary }]}>
-                Essayez d'autres mots-clÃ©s ou modifiez vos filtres
+                Essayez d'autres mots-clés ou modifiez vos filtres
               </Text>
             </View>
           ) : null
@@ -266,10 +266,10 @@ function FilterModal({ visible, filters, onApply, onClose, isDark }: {
           </View>
 
           {/* Modality */}
-          <Text style={[styles.filterLabel, { color: textSecondary }]}>MODALITÃ‰</Text>
+          <Text style={[styles.filterLabel, { color: textSecondary }]}>MODALITÉ</Text>
           <View style={styles.filterChips}>
             {[
-              { id: 'presentiel', label: 'PrÃ©sentiel' },
+              { id: 'presentiel', label: 'Présentiel' },
               { id: 'en_ligne', label: 'En ligne' },
               { id: 'hybride', label: 'Hybride' },
             ].map((m) => (

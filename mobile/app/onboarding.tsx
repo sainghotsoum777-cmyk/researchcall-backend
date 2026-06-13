@@ -21,15 +21,15 @@ const SLIDES = [
     color: '#3B82F6',
     gradient: ['#1E3A8A', '#3B82F6'] as [string, string],
     title: 'Tous les appels en un endroit',
-    subtitle: 'Communications, publications, bourses, colloquesâ€¦\nCentralisÃ©s pour vous en temps rÃ©el.',
+    subtitle: 'Communications, publications, bourses, colloques…\nCentralisés pour vous en temps réel.',
   },
   {
     id: '2',
     icon: 'notifications',
     color: '#8B5CF6',
     gradient: ['#4C1D95', '#8B5CF6'] as [string, string],
-    title: 'Alertes personnalisÃ©es',
-    subtitle: 'Recevez des notifications intelligentes basÃ©es sur vos domaines de recherche.',
+    title: 'Alertes personnalisées',
+    subtitle: 'Recevez des notifications intelligentes basées sur vos domaines de recherche.',
   },
   {
     id: '3',
@@ -37,7 +37,7 @@ const SLIDES = [
     color: '#10B981',
     gradient: ['#064E3B', '#10B981'] as [string, string],
     title: 'Ne manquez plus aucune deadline',
-    subtitle: 'Ajoutez les Ã©chÃ©ances Ã  votre calendrier en un seul tap.',
+    subtitle: 'Ajoutez les échéances Ã  votre calendrier en un seul tap.',
   },
   {
     id: '4',
@@ -45,7 +45,7 @@ const SLIDES = [
     color: '#F59E0B',
     gradient: ['#78350F', '#F59E0B'] as [string, string],
     title: 'Partagez et publiez',
-    subtitle: 'Diffusez vos appels auprÃ¨s de 60 000+ chercheurs africains de l\'espace CAMES.',
+    subtitle: 'Diffusez vos appels auprès de 60 000+ chercheurs africains de l\'espace CAMES.',
   },
 ];
 

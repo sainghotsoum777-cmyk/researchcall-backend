@@ -101,7 +101,7 @@ const CallCard = memo(({ call, onPress, compact = false, colorScheme = 'light' }
               <Ionicons name="globe-outline" size={13} color={textSecondary} />
               <Text style={[styles.metaText, { color: textSecondary }]}>
                 {call.locationModality === 'en_ligne' ? 'En ligne' :
-                 call.locationModality === 'hybride' ? 'Hybride' : 'PrÃ©sentiel'}
+                 call.locationModality === 'hybride' ? 'Hybride' : 'Présentiel'}
               </Text>
             </View>
           ) : null}

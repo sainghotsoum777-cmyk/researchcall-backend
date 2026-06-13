@@ -15,11 +15,11 @@ import { fr } from 'date-fns/locale';
 type Step = 1 | 2 | 3 | 4 | 5;
 
 const STEPS = [
-  'Informations gÃ©nÃ©rales',
+  'Informations générales',
   'Dates & lieu',
-  'DÃ©tails & contact',
+  'Détails & contact',
   'Domaines & axes',
-  'RÃ©vision',
+  'Révision',
 ];
 
 export default function PublishScreen() {
@@ -103,10 +103,10 @@ export default function PublishScreen() {
         status: asDraft ? 'draft' : 'pending',
       });
       Alert.alert(
-        asDraft ? 'Brouillon sauvegardÃ©' : 'Appel soumis !',
+        asDraft ? 'Brouillon sauvegardé' : 'Appel soumis !',
         asDraft
-          ? 'Votre brouillon a Ã©tÃ© sauvegardÃ©.'
-          : "Votre appel est en attente de validation par l'Ã©quipe ResearchCall.",
+          ? 'Votre brouillon a été sauvegardé.'
+          : "Votre appel est en attente de validation par l'équipe ResearchCall.",
         [{ text: 'OK', onPress: () => router.back() }],
       );
     } catch (e: any) {
@@ -126,7 +126,7 @@ export default function PublishScreen() {
         <View style={{ flex: 1 }}>
           <Text style={[styles.headerTitle, { color: textPrimary }]}>Publier un appel</Text>
           <Text style={[styles.headerStep, { color: textSecondary }]}>
-            Ã‰tape {step}/{STEPS.length} â€” {STEPS[step - 1]}
+            Étape {step}/{STEPS.length} —” {STEPS[step - 1]}
           </Text>
         </View>
         <TouchableOpacity onPress={() => publish(true)} disabled={loading}>
@@ -143,7 +143,7 @@ export default function PublishScreen() {
         {step === 1 && (
           <>
             <Field label="TITRE DE L'APPEL *">
-              <Input value={form.title} onChangeText={(v: string) => u('title', v)} placeholder="Ex: Appel Ã  communications â€” Colloque CAMES 2026" />
+              <Input value={form.title} onChangeText={(v: string) => u('title', v)} placeholder="Ex: Appel Ã  communications —” Colloque CAMES 2026" />
             </Field>
 
             <Field label="TYPE D'APPEL *">
@@ -168,7 +168,7 @@ export default function PublishScreen() {
             </Field>
 
             <Field label="DESCRIPTION *">
-              <Input value={form.description} onChangeText={(v: string) => u('description', v)} placeholder="DÃ©crivez l'appel en dÃ©tailâ€¦" multiline />
+              <Input value={form.description} onChangeText={(v: string) => u('description', v)} placeholder="Décrivez l'appel en détail…" multiline />
             </Field>
           </>
         )}
@@ -212,10 +212,10 @@ export default function PublishScreen() {
               <Input value={form.locationCity} onChangeText={(v: string) => u('locationCity', v)} placeholder="Ex: Abidjan" />
             </Field>
 
-            <Field label="MODALITÃ‰">
+            <Field label="MODALITÉ">
               <View style={styles.row3}>
                 {[
-                  { id: 'presentiel', label: 'PrÃ©sentiel', icon: 'location' },
+                  { id: 'presentiel', label: 'Présentiel', icon: 'location' },
                   { id: 'en_ligne', label: 'En ligne', icon: 'globe' },
                   { id: 'hybride', label: 'Hybride', icon: 'git-branch' },
                 ].map((m) => (
@@ -248,7 +248,7 @@ export default function PublishScreen() {
               <Input value={form.externalUrl} onChangeText={(v: string) => u('externalUrl', v)} placeholder="https://..." />
             </Field>
             <Field label="CONDITIONS DE SOUMISSION">
-              <Input value={form.submissionConditions} onChangeText={(v: string) => u('submissionConditions', v)} placeholder="Conditions, format requisâ€¦" multiline />
+              <Input value={form.submissionConditions} onChangeText={(v: string) => u('submissionConditions', v)} placeholder="Conditions, format requis…" multiline />
             </Field>
           </>
         )}
@@ -280,7 +280,7 @@ export default function PublishScreen() {
               </View>
             </Field>
 
-            <Field label="AXES THÃ‰MATIQUES">
+            <Field label="AXES THÉMATIQUES">
               {form.thematicAxes.map((ax, i) => (
                 <View key={i} style={{ flexDirection: 'row', gap: 8, marginBottom: 8 }}>
                   <Input
@@ -312,15 +312,15 @@ export default function PublishScreen() {
 
         {step === 5 && (
           <View style={[styles.reviewCard, { backgroundColor: surface, borderColor: border }]}>
-            <Text style={[styles.reviewTitle, { color: textPrimary }]}>RÃ©capitulatif</Text>
+            <Text style={[styles.reviewTitle, { color: textPrimary }]}>Récapitulatif</Text>
             {[
               { label: 'Titre', value: form.title },
               { label: 'Type', value: CALL_TYPES.find((t) => t.id === form.type)?.label },
               { label: 'Deadline', value: format(form.submissionDeadline, 'dd MMMM yyyy', { locale: fr }) },
-              { label: 'Lieu', value: [form.locationCity, form.locationCountry].filter(Boolean).join(', ') || 'â€”' },
-              { label: 'ModalitÃ©', value: form.locationModality },
-              { label: 'Domaines', value: form.domains.join(', ') || 'â€”' },
-              { label: 'Contact', value: form.contactEmail || 'â€”' },
+              { label: 'Lieu', value: [form.locationCity, form.locationCountry].filter(Boolean).join(', ') || '—”' },
+              { label: 'Modalité', value: form.locationModality },
+              { label: 'Domaines', value: form.domains.join(', ') || '—”' },
+              { label: 'Contact', value: form.contactEmail || '—”' },
             ].map((item) => (
               <View key={item.label} style={[styles.reviewRow, { borderBottomColor: border }]}>
                 <Text style={[styles.reviewLabel, { color: textSecondary }]}>{item.label}</Text>

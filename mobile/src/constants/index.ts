@@ -11,25 +11,25 @@ export const CALL_TYPES = [
 ] as const;
 
 export const MODALITIES = [
-  { id: 'presentiel', label: 'PrÃ©sentiel', icon: 'location' },
+  { id: 'presentiel', label: 'Présentiel', icon: 'location' },
   { id: 'en_ligne', label: 'En ligne', icon: 'globe' },
   { id: 'hybride', label: 'Hybride', icon: 'git-branch' },
 ] as const;
 
 export const CAMES_COUNTRIES = [
-  'BÃ©nin', 'Burkina Faso', "CÃ´te d'Ivoire", 'Gabon', 'GuinÃ©e', 'Madagascar',
-  'Mali', 'Mauritanie', 'Niger', 'RÃ©publique du Congo', 'RD Congo', 'Rwanda',
-  'SÃ©nÃ©gal', 'Tchad', 'Togo', 'Cameroun', 'Comores', 'Djibouti', 'HaÃ¯ti',
+  'Bénin', 'Burkina Faso', "Côte d'Ivoire", 'Gabon', 'Guinée', 'Madagascar',
+  'Mali', 'Mauritanie', 'Niger', 'République du Congo', 'RD Congo', 'Rwanda',
+  'Sénégal', 'Tchad', 'Togo', 'Cameroun', 'Comores', 'Djibouti', 'HaÃ¯ti',
 ];
 
 export const RESEARCH_DOMAINS = [
-  'Sciences exactes et naturelles', "Sciences de l'ingÃ©nieur", 'Sciences mÃ©dicales',
+  'Sciences exactes et naturelles', "Sciences de l'ingénieur", 'Sciences médicales',
   'Sciences agronomiques', 'Sciences sociales', 'Sciences humaines', 'Lettres et arts',
-  'Droit et sciences politiques', 'Sciences Ã©conomiques et gestion',
-  "Sciences de l'information et de la communication", 'MathÃ©matiques',
+  'Droit et sciences politiques', 'Sciences économiques et gestion',
+  "Sciences de l'information et de la communication", 'Mathématiques',
   'Physique', 'Chimie', 'Biologie', 'Informatique', 'Environnement',
-  'GÃ©ographie', 'Histoire', 'Philosophie', 'Linguistique',
-  'Ã‰ducation et formation', 'SantÃ© publique', 'Nutrition', 'Biotechnologie',
+  'Géographie', 'Histoire', 'Philosophie', 'Linguistique',
+  'Éducation et formation', 'Santé publique', 'Nutrition', 'Biotechnologie',
 ];
 
 export const DEADLINE_URGENCY_DAYS = {

@@ -73,7 +73,7 @@ export default function HomeScreen() {
               <Text style={styles.greeting}>
                 Bonjour, {user?.firstName ?? 'Chercheur'} ðŸ‘‹
               </Text>
-              <Text style={styles.subGreeting}>DÃ©couvrez les derniers appels scientifiques</Text>
+              <Text style={styles.subGreeting}>Découvrez les derniers appels scientifiques</Text>
             </View>
             <Image
               source={{
@@ -90,7 +90,7 @@ export default function HomeScreen() {
               {[
                 { icon: 'library', value: stats.total, label: 'appels actifs' },
                 { icon: 'flash', value: stats.newToday, label: "nouveaux aujourd'hui" },
-                { icon: 'time', value: stats.upcoming, label: 'expirent bientÃ´t' },
+                { icon: 'time', value: stats.upcoming, label: 'expirent bientôt' },
               ].map((s) => (
                 <View key={s.label} style={styles.statCard}>
                   <Ionicons name={s.icon as any} size={16} color="rgba(255,255,255,0.8)" />
@@ -104,7 +104,7 @@ export default function HomeScreen() {
 
         {/* Category chips */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: textPrimary }]}>Explorer par catÃ©gorie</Text>
+          <Text style={[styles.sectionTitle, { color: textPrimary }]}>Explorer par catégorie</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.chipsScroll}>
             {CALL_TYPES.map((type) => (
               <TouchableOpacity
@@ -126,7 +126,7 @@ export default function HomeScreen() {
               <View style={styles.sectionTitleRow}>
                 <Ionicons name="flame" size={18} color={COLORS.danger} />
                 <Text style={[styles.sectionTitle, { color: textPrimary, marginBottom: 0 }]}>
-                  Ã‰chÃ©ances urgentes
+                  Échéances urgentes
                 </Text>
               </View>
             </View>
@@ -148,7 +148,7 @@ export default function HomeScreen() {
         {/* Personalized feed */}
         <View style={[styles.section, { paddingBottom: 100 }]}>
           <View style={styles.sectionHeader}>
-            <Text style={[styles.sectionTitle, { color: textPrimary }]}>Mon fil personnalisÃ©</Text>
+            <Text style={[styles.sectionTitle, { color: textPrimary }]}>Mon fil personnalisé</Text>
             <TouchableOpacity onPress={() => router.push('/(tabs)/explore')}>
               <Text style={{ color: COLORS.primary, fontSize: 13, fontWeight: '600' }}>Voir tout</Text>
             </TouchableOpacity>

@@ -12,7 +12,7 @@ import { COLORS, RESEARCH_DOMAINS } from '../../src/constants';
 
 const ROLES: { id: UserRole; label: string; desc: string }[] = [
   { id: 'seeker', label: 'Chercheur', desc: 'Je recherche des appels' },
-  { id: 'publisher', label: 'Ã‰diteur', desc: 'Je publie des appels' },
+  { id: 'publisher', label: 'Éditeur', desc: 'Je publie des appels' },
   { id: 'both', label: 'Les deux', desc: 'Je recherche et publie' },
 ];
 
@@ -101,11 +101,11 @@ export default function RegisterScreen() {
 
           {step === 1 && (
             <View style={styles.form}>
-              <Text style={styles.heading}>CrÃ©er un compte</Text>
-              <Text style={styles.subheading}>Ã‰tape 1 â€” Informations personnelles</Text>
+              <Text style={styles.heading}>Créer un compte</Text>
+              <Text style={styles.subheading}>Étape 1 —” Informations personnelles</Text>
 
               {[
-                { key: 'firstName', label: 'PrÃ©nom', icon: 'person-outline' },
+                { key: 'firstName', label: 'Prénom', icon: 'person-outline' },
                 { key: 'lastName', label: 'Nom', icon: 'person-outline' },
                 { key: 'email', label: 'Email', icon: 'mail-outline', keyboard: 'email-address' },
                 { key: 'password', label: 'Mot de passe', icon: 'lock-closed-outline', secure: true },
@@ -135,11 +135,11 @@ export default function RegisterScreen() {
 
           {step === 2 && (
             <View style={styles.form}>
-              <Text style={styles.heading}>Votre profil acadÃ©mique</Text>
-              <Text style={styles.subheading}>Ã‰tape 2 â€” Institution & RÃ´le</Text>
+              <Text style={styles.heading}>Votre profil académique</Text>
+              <Text style={styles.subheading}>Étape 2 —” Institution & Rôle</Text>
 
               {[
-                { key: 'institution', label: 'Institution / UniversitÃ©', icon: 'school-outline' },
+                { key: 'institution', label: 'Institution / Université', icon: 'school-outline' },
                 { key: 'laboratory', label: 'Laboratoire (optionnel)', icon: 'flask-outline' },
               ].map((f) => (
                 <View key={f.key} style={styles.fieldWrap}>
@@ -154,7 +154,7 @@ export default function RegisterScreen() {
                 </View>
               ))}
 
-              <Text style={styles.sectionLabel}>RÃ´le principal</Text>
+              <Text style={styles.sectionLabel}>Rôle principal</Text>
               {ROLES.map((r) => (
                 <TouchableOpacity
                   key={r.id}
@@ -189,7 +189,7 @@ export default function RegisterScreen() {
             <View style={styles.form}>
               <Text style={styles.heading}>Vos domaines</Text>
               <Text style={styles.subheading}>
-                Ã‰tape 3 â€” SÃ©lectionnez vos domaines de recherche pour personnaliser votre fil
+                Étape 3 —” Sélectionnez vos domaines de recherche pour personnaliser votre fil
               </Text>
 
               <View style={styles.domainsGrid}>
@@ -222,7 +222,7 @@ export default function RegisterScreen() {
                     <ActivityIndicator color="#fff" />
                   ) : (
                     <>
-                      <Text style={styles.btnText}>CrÃ©er mon compte</Text>
+                      <Text style={styles.btnText}>Créer mon compte</Text>
                       <Ionicons name="checkmark" size={18} color="#fff" />
                     </>
                   )}
@@ -230,7 +230,7 @@ export default function RegisterScreen() {
               </View>
 
               <View style={styles.loginRow}>
-                <Text style={styles.loginHint}>DÃ©jÃ  un compte ? </Text>
+                <Text style={styles.loginHint}>DéjÃ  un compte ? </Text>
                 <Link href="/(auth)/login">
                   <Text style={styles.loginLink}>Se connecter</Text>
                 </Link>

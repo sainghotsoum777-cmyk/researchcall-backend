@@ -14,11 +14,11 @@ import { format, parseISO } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
 const STATUS_CONFIG: Record<AppStatus, { label: string; color: string; icon: string }> = {
-  interested: { label: 'IntÃ©ressÃ©', color: '#94A3B8', icon: 'bookmark-outline' },
+  interested: { label: 'Intéressé', color: '#94A3B8', icon: 'bookmark-outline' },
   inProgress: { label: 'En cours', color: COLORS.warning, icon: 'create-outline' },
   submitted: { label: 'Soumis', color: COLORS.primary, icon: 'send' },
-  accepted: { label: 'AcceptÃ©', color: COLORS.success, icon: 'checkmark-circle' },
-  rejected: { label: 'RefusÃ©', color: COLORS.danger, icon: 'close-circle' },
+  accepted: { label: 'Accepté', color: COLORS.success, icon: 'checkmark-circle' },
+  rejected: { label: 'Refusé', color: COLORS.danger, icon: 'close-circle' },
 };
 
 export default function TrackerScreen() {

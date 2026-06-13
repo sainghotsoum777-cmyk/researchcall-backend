@@ -33,12 +33,12 @@ export default function ForgotPasswordScreen() {
           <View style={styles.icon}>
             <Ionicons name="mail" size={40} color={COLORS.primary} />
           </View>
-          <Text style={styles.title}>Mot de passe oubliÃ©</Text>
+          <Text style={styles.title}>Mot de passe oublié</Text>
 
           {sent ? (
             <>
               <Text style={styles.desc}>
-                Si cet email est associÃ© Ã  un compte, vous recevrez un lien de rÃ©initialisation dans les prochaines minutes.
+                Si cet email est associé Ã  un compte, vous recevrez un lien de réinitialisation dans les prochaines minutes.
               </Text>
               <TouchableOpacity style={styles.btn} onPress={() => router.back()}>
                 <Text style={styles.btnText}>Retour Ã  la connexion</Text>
@@ -47,7 +47,7 @@ export default function ForgotPasswordScreen() {
           ) : (
             <>
               <Text style={styles.desc}>
-                Entrez votre adresse email et nous vous enverrons un lien pour rÃ©initialiser votre mot de passe.
+                Entrez votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe.
               </Text>
               <View style={styles.field}>
                 <Ionicons name="mail-outline" size={18} color="#64748B" />

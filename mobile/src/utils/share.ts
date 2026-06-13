@@ -16,7 +16,7 @@ export async function shareCall(call: Call) {
     ``,
     call.externalUrl ? `ðŸ”— ${call.externalUrl}` : '',
     ``,
-    `_PartagÃ© via ResearchCall â€” L'agrÃ©gateur d'appels scientifiques de l'Afrique francophone_`,
+    `_Partagé via ResearchCall —” L'agrégateur d'appels scientifiques de l'Afrique francophone_`,
     `researchcall://calls/${call.id}`,
   ]
     .filter(Boolean)
